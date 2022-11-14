@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="search-image.css">
+    <script src="search image.js" defer></script> 
+</head>
+  <body>
+    <nav class="navbar bg-dark d-flex justify-content-center" id="navigation_bar">
+        <h1 class="text-center text-warning">Search for free photos 😀 </h1>
+    </nav>
+
+    <div class="container mt-3">
+    <form id="form" autocomplete="off" class="d-flex justify-content-evenly">
+        <select  id="select">
+            <option value="--select language--" >--select language--</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Gujrati">Gujrati</option>
+            <option value="Rajasthani">Rajasthani</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Punjabi">Punjabi</option>
+            <option value="Urdu">Urdu</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Kannad">Kannad</option>
+            <option value="Telugu">Telugu</option>
+            <option value="Marathi">Marathi</option>
+            <option value="Bangla">Bangla</option>
+            <option value="Assamese">Assamese</option>
+            <option value="Kashmiri">Kashmiri</option>
+        </select>
+
+        <input type="text" placeholder="Search Image" id="search" class="text-center here w-50 p-1">
+
+        <button class="btn text-white" style="background-color:green ;">Search Image</button>
+    </form>
+    </div>
+
+    <div class="container mt-5 d-flex flex-wrap justify-content-evenly " id="result">
+    </div>
+
+
+    <div class="container mt-2 text-center">
+        <h2 class="text-light bg-dark">Suggestions</h2>
+        <div class="row m-2">
+            <div class="col images">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/1200px-Lion_waiting_in_Namibia.jpg" alt="lion">
+            </div>
+            <div class="col images">
+                <img src="https://static.scientificamerican.com/sciam/cache/file/7A715AD8-449D-4B5A-ABA2C5D92D9B5A21_source.png" alt="bird">
+            </div>
+            <div class="col images">
+                <img src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_2x1.jpg" alt="cat">
+            </div>
+            <div class="col images">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiLY9qvxExT8M0Oi4MfBDSZXCChEKSI8Huhz1GtuChVkG_ZSy0ru25SSrJhb-0g4jeCRE&usqp=CAU" alt="fish">
+            </div>
+        </div>
+
+        <div class="row m-2">
+            <div class="col images">
+                <img src="https://daily.jstor.org/wp-content/uploads/2020/06/why_you_should_learn_the_names_of_trees_1050x700.jpg" alt="tree">
+            </div>
+            <div class="col images">
+                <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2018/11/Rivers-of-the-World-Cover.jpg" alt="river">
+            </div>
+            <div class="col images">
+                <img src="https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?cs=srgb&dl=pexels-pixabay-56866.jpg&fm=jpg" alt="flower">
+            </div>
+            <div class="col images">
+                <img src="http://store-images.s-microsoft.com/image/apps.23032.13608622719434797.30372fd8-b4bd-41c0-beea-1c2a61e087c1.a8347bb5-9305-48e8-b668-08df54c5a91a" alt="mountain">
+            </div>
+        </div>
+    </div>
+ 
+
+    <a href="#navigation_bar" id="up_button">
+        &#8593;
+    </a>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
