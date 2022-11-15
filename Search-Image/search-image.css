@@ -5,6 +5,7 @@ img{
     padding: 1px 1px 3% 1px;
     margin: 1%;
     box-shadow: 5px 5px 15px 5px grey;
+    background-color: white;
 }
 body{
     position: relative;
@@ -47,6 +48,16 @@ a{
     flex-direction: column;
     text-decoration: none;
 }
+#down_button{
+    background-color: green;
+    color: white;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    border-radius: 50%;
+    padding: 0% 1%;
+    font-size: 150%;
+}
 #up_button{
     background-color: green;
     color: white;
@@ -58,6 +69,15 @@ a{
     font-size: 150%;
 }
 
+#sugestions_container{
+    background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    ),
+    url("https://cdn.pixabay.com/photo/2014/12/24/05/02/drop-of-water-578897__480.jpg");
+}
+
 @media screen and (max-width:767px) {
     #select{
         width: 30%;
@@ -65,5 +85,7 @@ a{
     #up_button{
         display: none;
     }
-    
+    #down_button{
+        display: none;
+    }   
 }
