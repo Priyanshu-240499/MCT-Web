@@ -74,7 +74,6 @@ function suggestion_data(search){
         return response.json();
     })
     .then((data)=>{
-        console.log(data);
          data.results.forEach(photo => {
             var a=document.createElement("a");
             a.target="_blank";

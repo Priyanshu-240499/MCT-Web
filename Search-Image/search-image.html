@@ -9,11 +9,11 @@
     <script src="search image.js" defer></script> 
 </head>
   <body>
-    <nav class="navbar bg-dark d-flex justify-content-center" id="navigation_bar">
+    <nav class="navbar d-flex justify-content-center" id="navigation_bar">
         <h1 class="text-center text-warning">Search for free photos 😀 </h1>
     </nav>
 
-    <div class="container mt-3">
+    <div class="fluid-container  p-4" id="search_bar">
     <form id="form" autocomplete="off" class="d-flex justify-content-evenly">
         <select  id="select">
             <option value="--select language--" >--select language--</option>
@@ -35,15 +35,15 @@
 
         <input type="text" placeholder="Search Image" id="search" class="text-center here w-50 p-1">
 
-        <button class="btn text-white" style="background-color:green ;">Search Image</button>
+        <button class="btn btn-secondary";>Search Image</button>
     </form>
     </div>
 
-    <div class="container mt-5 d-flex flex-wrap justify-content-evenly " id="result">
+    <div class="container mt d-flex flex-wrap justify-content-evenly " id="result">
     </div>
 
     <div class="fluid-container text-center border-bottom border-dark border-2" id="sugestions_container">
-        <h2 class="text-light bg-dark">Suggestions</h2>
+        <h2 class="text-light bg-dark border border-light border-2">Suggestions</h2>
     <div class="container mt-2 " >
         <div class="row m-2">
             <div class="col images">

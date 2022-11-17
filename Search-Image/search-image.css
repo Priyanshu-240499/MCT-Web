@@ -9,6 +9,7 @@ img{
 }
 body{
     position: relative;
+    background-color: tan;
 }
 .images{
     text-align: center;
@@ -17,36 +18,41 @@ body{
 .images:hover{
     background-image: linear-gradient(to right, orangered,white , green);
 }
-
+#navigation_bar{
+    background: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.7),rgba(0,0,0,0.5),rgba(0,0,0,0.3),rgba(0,0,0,0.5),rgba(0,0,0,0.7),rgba(0,0,0,0.9));
+}
+#search_bar{
+    background: linear-gradient(rgb(128, 128, 128,0.8),rgb(128, 128, 128,0.6),rgb(128, 128, 128,0.4),rgb(128, 128, 128,0.2));
+}
 select{
-    border: 1px solid rgb(233, 59, 62);
+
     border-radius: 5px;
     color:white;
-    background-color:  orangered;
-}
-option{
-    background-color:lightsalmon ;
-    color:white;
+    background-color:  gray;
 }
 
 #search{
     border: 1px solid white;
     border-radius: 5px;
-    background-image: linear-gradient(to right, orangered,white , green);
+    background-color:  gray;
 }
 input::placeholder{
-    color: rgb(145, 7, 145);
+    color: white;
 }
 
 a:hover{
     background-color:rgba(0,0,0,0.2);
     padding: 1px;
-    color: green;
+    color: rgb(13, 230, 13);
 }
 a{
     display: flex;
     flex-direction: column;
     text-decoration: none;
+    color: rgb(6, 57, 104);
+}
+a:visited{
+    color: rgb(255, 51, 0);
 }
 #down_button{
     background-color: green;
