@@ -41,6 +41,7 @@ function checkScreen(element,index){
     }
   currentUser(element,index)
 }
+// Function for getting Data for selected User .......................
 function currentUser(element,index) {
    const userList= document.querySelectorAll(".user-list")
    userList.forEach(element=>element.classList.remove("active"))
@@ -49,6 +50,7 @@ function currentUser(element,index) {
     const currentUserData=usersData.filter(item=>item.name===name)
     UpdateChat(currentUserData,Object.values(JsonData)[index]);
 }
+// Function for Updating Data for selected User .......................
 function UpdateChat([{avatar,name,status}],chat){
 const current_user=document.createElement("div")
     current_user.classList.add("current-user")
@@ -100,7 +102,8 @@ const current_user=document.createElement("div")
     document.querySelector(".chat-box").appendChild(noChat)
   }
 }
-// Go back for small screen ............................................
+
+//Function togGo back for small screen ............................................
 function goBack() {
     document.querySelector(".right").style.display="none"
     document.querySelector(".left").style.display="block"
