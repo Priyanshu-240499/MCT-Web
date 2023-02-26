@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_chatroom_chat_2_type_message</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/e49327de27.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="./Enterprise_BOT.js"></script>
+    <script src="./userData.js"></script>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="left">
+        <header>
+          <h4>CHAT SESSION</h4>
+        </header>
+      </div>
+      <!--  Right side...................................................................... -->
+      <div class="right">
+        <header>
+            <div class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></div>
+          <h4>CHAT DETAILS</h4>
+          <div><i class="fa-solid fa-x"></i></div>
+        </header>
+        <div class="chat-box">
+          <div class="current-user">
+            <div class="current-user-sub">
+              <div class="current_avatar">
+                <img
+                src="https://hips.hearstapps.com/hmg-prod/images/gettyimages-942065100-copy.jpg?resize=1200:*"
+                alt="John Mayers"
+              />
+              <div class="online"></div>
+            </div>
+              <div class="current_status">
+                <p class="current-title">John Mayers</p>
+                <p class="current-highlights">Accountant</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat">
+            <div class="user1-container">
+              <p class="user1-mssg">Hi, how can I help you?</p>
+            </div>
+            <div class="user2-container">
+              <p class="user2-mssg">
+                Hi guys Ive got the O2 package and have really slow
+                internet. A speed check online said i can get 3mbps but it seems
+                more like 0.5 these days, just freezing and taking ages to open
+                pages and open audio files for example. I have decided to switch
+                to the UPC package which offers 10mbps but do you think i will
+                get it?
+              </p>
+            </div>
+            <div class="user1-container">
+                <p class="user1-mssg">Sure! I will definitely help you with you query. Could you please confirm your email address</p>
+              </div>
+
+          </div>
+        </div>
+        <div class="mssg-box">
+          <input type="text" placeholder="Message" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
