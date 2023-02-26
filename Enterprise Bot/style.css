@@ -99,6 +99,8 @@ header {
   height: 84vh;
 }
 .chat {
+  width: 100%;
+  box-sizing: border-box;
   overflow: hidden;
   overflow-y: scroll;
   z-index: -1;
@@ -249,5 +251,8 @@ body::-webkit-scrollbar {
   }
   .chat::-webkit-scrollbar {
     display: none;
+  }
+  .chat{
+    padding: 0px 15px;
   }
 }
