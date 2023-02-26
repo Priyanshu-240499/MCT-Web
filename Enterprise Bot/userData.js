@@ -9,7 +9,7 @@ const usersData = [
       },
       {
         avatar:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Robert_Downey%2C_Jr._2012.jpg/1200px-Robert_Downey%2C_Jr._2012.jpg",
+          "https://cdn.pixabay.com/photo/2021/07/20/14/59/iron-man-6480952_1280.jpg",
         name: "Tony Stark",
         time: "10 min ago",
         status:"Genius, Billionaire, Playboy, Philanthropist"
