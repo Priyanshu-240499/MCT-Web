@@ -77,7 +77,7 @@ const usersData = [
   {
     avatar:
       "https://m.media-amazon.com/images/M/MV5BMTQ1NTQwMTYxNl5BMl5BanBnXkFtZTYwMjA1MzY1._V1_FMjpg_UX1000_.jpg",
-    name: "Samuel L. Jackson",
+    name: "S.L. Jackson",
     time: "Dec 2",
     status: "Shield",
   },
