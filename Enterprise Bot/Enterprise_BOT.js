@@ -1,112 +1,190 @@
 // Function to create UI for user List ....................
-function createUserList({avatar,name,time},index) {
-const newuser=document.createElement("div")
-if(index===0){
-    newuser.classList.add("user-list")
-    newuser.classList.add("active")
-}
-else{
-    newuser.classList.add("user-list")
-}
-newuser.innerHTML=`
-<div class="user-list-sub" onclick="checkScreen(this,${index})">
-  
-  <div class="avatar">
-    <img
-      src=${avatar}
-      alt=${name}
-      loading="lazy"
-    />
-  </div>
-  <div class="profile-highlight">
-    <div class="user-name">
-      <p class="title">${name}</p>
-      <p class="time">${time}</p>
+function createUserList({ avatar, name, time }, index) {
+  const newuser = document.createElement("div");
+  if (index === 0) {
+    newuser.classList.add("user-list");
+    newuser.classList.add("active");
+  } else {
+    newuser.classList.add("user-list");
+  }
+  newuser.innerHTML = `
+  <div class="user-list-sub" onclick="checkScreen(this,${index})">
+    
+    <div class="avatar">
+      <img
+        src=${avatar}
+        alt=${name}
+        loading="lazy"
+      />
     </div>
-    <p class="highlights">
-      Lorem, ipsum dolor sit amet consectetur...
-    </p>
-  </div>
-</div>`
-document.querySelector(".left").appendChild(newuser)
+    <div class="profile-highlight">
+      <div class="user-name">
+        <p class="title">${name}</p>
+        <p class="time">${time}</p>
+      </div>
+      <p class="highlights">
+        Lorem, ipsum dolor sit amet consectetur...
+      </p>
+    </div>
+  </div>`;
+  document.querySelector(".userList").appendChild(newuser);
 }
-usersData.map((item,index)=>createUserList(item,index))
+function setList(arr) {
+  arr.map((item, index) => createUserList(item, index));
+}
+setList(usersData);
+// usersData.map((item,index)=>createUserList(item,index))
 
 //  Function to change chat Data based on click...............................
-function checkScreen(element,index){
-    if(window.screen.width<=600){
-        document.querySelector(".left").style.display="none"
-        document.querySelector(".right").style.display="block"
-        document.querySelector(".right").style.width="100%"
-    }
-  currentUser(element,index)
+function checkScreen(element, index) {
+  if (window.innerWidth <= 750) {
+    document.querySelector(".left").style.display = "none";
+    document.querySelector(".right").style.display = "block";
+    document.querySelector(".right").style.width = "100%";
+  }
+  currentUser(element, index);
 }
 // Function for getting Data for selected User .......................
-function currentUser(element,index) {
-   const userList= document.querySelectorAll(".user-list")
-   userList.forEach(element=>element.classList.remove("active"))
-    element.parentElement.classList.add("active")
-    const name=element.children[1].children[0].children[0].innerHTML
-    const currentUserData=usersData.filter(item=>item.name===name)
-    UpdateChat(currentUserData,Object.values(JsonData)[index]);
+function currentUser(element, index) {
+  const userList = document.querySelectorAll(".user-list");
+  userList.forEach((element) => element.classList.remove("active"));
+  element.parentElement.classList.add("active");
+  const name = element.children[1].children[0].children[0].innerHTML;
+  const currentUserData = usersData.filter((item) => item.name === name);
+  UpdateChat(currentUserData, Object.values(JsonData)[index]);
 }
 // Function for Updating Data for selected User .......................
-function UpdateChat([{avatar,name,status}],chat){
-const current_user=document.createElement("div")
-    current_user.classList.add("current-user")
-    current_user.innerHTML=`
-    <div class="current-user-sub">
-    <div class="current_avatar">
-      <img
-      src=${avatar}
-      alt=${name}
-    />
-    <div class="online"></div>
-  </div>
-    <div class="current_status">
-      <p class="current-title">${name}</p>
-      <p class="current-highlights">${status}</p>
+function UpdateChat([{ avatar, name, status }], chat) {
+  const current_user = document.createElement("div");
+  current_user.classList.add("current-user");
+  current_user.innerHTML = `
+      <div class="current-user-sub">
+      <div class="current_avatar">
+       <span>
+       <img
+        src=${avatar}
+        alt=${name}
+      />
+      <div class="online"></div>
+       </span>
     </div>
-  </div>`
+      <div class="current_status">
+        <p class="current-title">${name}</p>
+        <p class="current-highlights">${status}</p>
+      </div>
+    </div>`;
 
-
-  if(chat!==undefined){
-    const chatData=document.createElement("div")
-    current_user.classList.add("chat")
-    chat.forEach(element => {
-        const user_container=document.createElement("div")
-        const user_mssg=document.createElement("p")
-        user_mssg.innerText=element.msg.message
-        user_container.appendChild(user_mssg)
-        if(element.from.type==="user1"){
-            user_container.classList.add("user1-container")
-            user_mssg.classList.add("user1-mssg")
-        }
-        else{
-            user_container.classList.add("user2-container")
-            user_mssg.classList.add("user2-mssg")
-        }
-        chatData.appendChild(user_container)
+  if (chat !== undefined) {
+    const chatData = document.createElement("div");
+    current_user.classList.add("chat");
+    chat.forEach((element) => {
+      const user_container = document.createElement("div");
+      const user_mssg = document.createElement("p");
+      user_mssg.innerText = element.msg.message;
+      user_container.appendChild(user_mssg);
+      if (element.from.type === "user1") {
+        user_container.classList.add("user1-container");
+        user_mssg.classList.add("user1-mssg");
+      } else {
+        user_container.classList.add("user2-container");
+        user_mssg.classList.add("user2-mssg");
+      }
+      chatData.appendChild(user_container);
     });
 
-    document.querySelector(".chat-box").innerHTML=""
-    document.querySelector(".chat-box").appendChild(current_user)
-    document.querySelector(".chat-box").appendChild(chatData)
-  }
-  else{
-    const noChat=document.createElement("h5")
-    noChat.innerText="Start Chat..."
-    document.querySelector(".chat-box").innerHTML=""
+    document.querySelector(".chat-box").innerHTML = "";
+    document.querySelector(".chat-box").appendChild(current_user);
+    document.querySelector(".chat-box").appendChild(chatData);
+  } else {
+    const noChat = document.createElement("h5");
+    noChat.innerText = "Start Chat...";
+    document.querySelector(".chat-box").innerHTML = "";
 
-    document.querySelector(".chat-box").appendChild(current_user)
-    document.querySelector(".chat-box").appendChild(noChat)
+    document.querySelector(".chat-box").appendChild(current_user);
+    document.querySelector(".chat-box").appendChild(noChat);
   }
 }
 
 //Function togGo back for small screen ............................................
 function goBack() {
-    document.querySelector(".right").style.display="none"
-    document.querySelector(".left").style.display="block"
-    document.querySelector(".left").style.width="100%"        
+  document.querySelector(".right").style.display = "none";
+  document.querySelector(".left").style.display = "block";
+  document.querySelector(".left").style.width = "100%";
+}
+// console.log(document.styleSheets[0]);
+// EventListner to autoadjust based on screen size
+window.addEventListener("resize", function () {
+  if (window.innerWidth <= 750) {
+    document.querySelector(".left").style.display = "block";
+    document.querySelector(".left").style.width = "100%";
+    document.querySelector(".right").style.display = "none";
+  } else if (window.innerWidth > 750) {
+    document.querySelector(".left").style.width = "32%";
+    document.querySelector(".left").style.display = "block";
+    document.querySelector(".right").style.width = "68%";
+    document.querySelector(".right").style.display = "block";
+  }
+});
+
+function serachUser(event) {
+  document.querySelector(".userList").innerHTML = "";
+  input = event.target.value;
+  if (input === "") {
+    setList(usersData);
+  } else {
+    const newList = usersData.filter((item) =>
+      item.name.toLowerCase().includes(input.toLowerCase())
+    );
+    if (newList.length === 0) {
+      document.querySelector(".userList").innerHTML = "No Data Found";
+      document.querySelector(".userList").style.fontWeight = "bolder";
+    } else {
+      setList(newList);
+    }
+  }
 }
 
+// function to change theme
+function selectTheme(event) {
+  let r = document.querySelector(":root");
+  let color = event.target.value;
+  if (color === "Change theme") {
+    r.style.setProperty("--my-mssg", "#00A0AE");
+  } else {
+    r.style.setProperty("--my-mssg", color);
+  }
+}
+
+// function to change Background image
+function changeBg(event) {
+  let r = document.querySelector(":root");
+  let bg = event.target.value;
+  const chatContainer=document.querySelector('.chat')
+  switch (bg) {
+    case "Change background":
+      chatContainer.style.backgroundImage='url("https://i.pinimg.com/originals/f5/05/24/f50524ee5f161f437400aaf215c9e12f.jpg")'
+      break;
+    case "image1":
+      chatContainer.style.backgroundImage='url("https://w0.peakpx.com/wallpaper/818/148/HD-wallpaper-whatsapp-background-cool-dark-green-new-theme-whatsapp.jpg")'
+      break;
+    case "image2":
+      chatContainer.style.backgroundImage='url("https://wallpaperaccess.com/full/1288076.jpg")'
+    break;
+    case "image3":
+      chatContainer.style.backgroundImage='url("https://i.pinimg.com/736x/78/1e/21/781e212cb0a891c6d8a3738c525e235d.jpg")'
+    break;
+  }
+}
+//  function for char and word count
+function calc(event) {
+  const str=event.target.value
+  if(str===""){
+    document.querySelector('.count-char').innerText=`Current characters:${0} and current words:${0}`
+  }
+  else{
+    const length=str.length
+  const arrlength=str.split(" ").length
+  document.querySelector('.count-char').innerText=`Current characters:${length} and current words:${arrlength}`
+  }
+  
+}

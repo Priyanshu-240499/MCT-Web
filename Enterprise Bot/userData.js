@@ -120,6 +120,7 @@ const JsonData = {
         message: "john.mayers@gmail.com",
       },
     },
+    
   ],
   chat2: [
     {
@@ -155,6 +156,6 @@ const JsonData = {
       msg: {
         message: "tony.stark@gmail.com",
       },
-    },
+    },    
   ],
 };

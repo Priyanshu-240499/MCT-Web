@@ -4,6 +4,9 @@
   padding: 0px;
   font-family: "Source Sans Pro", sans-serif;
 }
+body{
+  overflow: hidden;
+}
 .main {
   width: 100%;
   display: flex;
@@ -19,7 +22,7 @@ header {
 }
 /*  CSS for left side ...............................⬇ */
 .left {
-  width: 32%;
+  width: 32% ;
   height: 100%;
   overflow: hidden;
   overflow-y: scroll;
@@ -27,7 +30,22 @@ header {
 .left > header {
   position: sticky;
   top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
+
+#dropdownMenuButton1{
+  background-color: var(--my-mssg);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+#dropdownMenuButton1:focus{
+  box-shadow: none ;
+}
+
 .user-list {
   height: 80px;
   width: 100%;
@@ -44,6 +62,8 @@ header {
   height: 75px;
   width: 100%;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .avatar {
   width: 20%;
@@ -61,50 +81,57 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 80%;
-  height: 100%;
+  width: 75%;
+  height: 85%;
 }
 .user-name {
   display: flex;
   justify-content: space-between;
 }
+.profile-highlight p{
+  margin: 0;
+}
 .title {
   font-size: 13px;
   font-weight: bold;
-  margin-left: 3px;
+  
 }
 .user-name > .time {
   font-size: 11px;
   margin-right: 15px;
+  
 }
 .highlights {
   font-size: 11px;
-  margin-left: 5px;
+  
 }
 /*  CSS for right side ...............................⬇ */
 .right {
-  width: 68%;
+  width: 68% ; 
   height: 100%;
-  
+  box-sizing: border-box;
 }
 .right > header {
   position: sticky;
   top: 0;
   display: flex;
   justify-content: space-between;
+  z-index: 10;
 }
-.back-btn {
-  display: none;
+.back-btn{
+  display:none;
 }
 .chat-box {
-  height: 84vh;
+  min-height: 72vh;
 }
 .chat {
-  width: 100%;
-  height: 71vh;
+  /* width: 100%; */
+  height: 72vh;
   box-sizing: border-box;
   overflow: hidden;
   overflow-y: scroll;
+  background-image: url("https://i.pinimg.com/originals/f5/05/24/f50524ee5f161f437400aaf215c9e12f.jpg");
+  background-size:cover;
   z-index: -1;
 }
 .current-user {
@@ -131,11 +158,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
-.current_avatar > img {
+.current_avatar>span{
   height: 70px;
   width: 70px;
+  position: relative;
+}
+span>img {
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
 }
 .online {
@@ -144,8 +175,8 @@ header {
   background-color: var(--online);
   border-radius: 50%;
   position: absolute;
-  top: 58px;
-  left: 63%;
+  bottom: 5px;
+  left: 55px;
 }
 .current_status {
   height: 100%;
@@ -158,16 +189,16 @@ header {
 }
 .current-highlights {
   font-size: 15px;
-  color: #43425d;
+  color: var(--text-dark);
 }
 .user1-container {
   display: flex;
   align-items: center;
 }
 .user1-mssg {
-  margin: 1% 2%;
-  width: 60%;
-  padding: 1%;
+  margin: 2% 2%;
+  max-width: 70%;
+  padding: 16px;
   font-size: 13px;
   background-color: var(--selected-chat);
   color: var(--text-dark);
@@ -179,10 +210,10 @@ header {
   justify-content: flex-end;
 }
 .user2-mssg {
-  margin: 1% 2%;
+  margin: 2% 2%;
   color: var(--text-white);
-  width: 60%;
-  padding: 1%;
+ max-width: 70%;
+  padding: 16px;
   font-size: 13px;
   background-color: var(--my-mssg);
   border-radius: 15px 15px 0px 15px;
@@ -191,61 +222,104 @@ header {
 /* CSS for input box for message............................. */
 .mssg-box {
   width: 100%;
-  height: 8vh;
+  height: 20vh;
   position: sticky;
   bottom: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  background-color: var(--my-mssg);
+  background-color: var(--text-white);
+  border-top:1px solid var(--border) ;
 }
-.mssg-box > input {
-  border: none;
+.count-char{
+  font-size: 13px;
+  color: var(--my-mssg);
+}
+.text-box{
+  background-color: var(--selected-chat);
   width: 95%;
   height: 70%;
-  border-radius: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.text-box > input {
+  border: none;
+  width: 85%;
+  height: 70%;
   font-size: 13px;
   padding-left: 10px;
+  background-color: var(--selected-chat);
 }
 input:focus {
   outline: none;
-  box-shadow: 0px 0px 8px navy;
+}
+.send-btn-div{
+  height: 70%;
+}
+.send-btn{
+  background-color: var(--my-mssg);
+  border-radius: 5px;
+  color: var(--text-white);
+  border: none;
+  padding: 0.3em 0.6em;
+  font-size: smaller;
 }
 
 /* CSS for scroll bar.......................................................... */
-
+body::-webkit-scrollbar{
+  display: none;
+}
 .left::-webkit-scrollbar {
   width: 4px;
 }
 .chat::-webkit-scrollbar {
   width: 10px;
+ 
 }
-.left::-webkit-scrollbar-track,
-.chat::-webkit-scrollbar-track {
+.left::-webkit-scrollbar-track
+ {
   background-color: var(--border);
 }
-.left ::-webkit-scrollbar-thumb,
-.chat ::-webkit-scrollbar-thumb {
+.chat::-webkit-scrollbar-track{
+  background-color: var(--border);
+ 
+}
+.left ::-webkit-scrollbar-thumb
+ {
   border-radius: 10px;
-  background-color: var(--border);
-  border: 1px solid var(--border);
+  background-color: var(--my-mssg);
+  border: 1px solid var(--my-mssg);
   background-clip: border-box;
+
 }
-.left::-webkit-scrollbar-thumb:hover,
-.chat::-webkit-scrollbar-thumb:hover {
+.chat ::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: var(--my-mssg);
+  border: 10px solid var(--my-mssg);
+  background-clip: border-box;
+ 
+}
+.left::-webkit-scrollbar-thumb:hover
+ {
   background-color: var(--my-mssg);
 }
+.chat::-webkit-scrollbar-thumb:hover{
+  background-color: var(--my-mssg);
+ 
+}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .left {
-    width: 100%;
+    width: 100% ;
   }
   .right {
-    display: none;
+    display: none ;
   }
-  .back-btn {
-    display: block;
-  }
+ .back-btn{
+  display: block;
+ }
   .left::-webkit-scrollbar {
     display: none;
   }
@@ -253,3 +327,4 @@ input:focus {
     display: none;
   }
 }
+

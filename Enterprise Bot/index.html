@@ -16,6 +16,8 @@
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <script
       src="https://kit.fontawesome.com/e49327de27.js"
       crossorigin="anonymous"
@@ -27,9 +29,59 @@
   <body>
     <div class="main">
       <div class="left">
-        <header>
+        <header class="chat-session-header">
           <h4>CHAT SESSION</h4>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <div class="dropdown-item" href="#">
+                <input type="text" placeholder="Serach User" class="searchUser" oninput="serachUser(event)"/>
+              </div>
+              <div class="dropdown-item" href="#">
+                <select onchange="selectTheme(event)">
+                  <option>Change theme</option>
+                  <option>black</option>
+                  <option>red</option>
+                  <option>blue</option>
+                  <option>green</option>
+                  <option>yellow</option>
+                  <option>grey</option>
+                  <option>plum</option>
+                  <option>navy</option>
+                  <option>pink</option>
+                  <option>purple</option>
+                  <option>coral</option>
+                  <option>orange</option>
+                  <option>brown</option>
+                  <option>cyan</option>
+                  <option>maroon</option>
+                  <option>olive</option>
+
+
+
+
+
+
+
+
+                  
+                </select>
+              </div>
+              <div class="dropdown-item" href="#">
+                <select onchange="changeBg(event)">
+                  <option >Change background</option>
+                  <option >image1</option>
+                  <option >image2</option>
+                  <option >image3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
         </header>
+        <div class="userList"></div>
       </div>
       <!--  Right side...................................................................... -->
       <div class="right">
@@ -44,11 +96,14 @@
           <div class="current-user">
             <div class="current-user-sub">
               <div class="current_avatar">
-                <img
+                <span>
+                  <img
                   src="https://hips.hearstapps.com/hmg-prod/images/gettyimages-942065100-copy.jpg?resize=1200:*"
                   alt="John Mayers"
                 />
                 <div class="online"></div>
+                </span>
+                
               </div>
               <div class="current_status">
                 <p class="current-title">John Mayers</p>
@@ -84,9 +139,17 @@
           </div>
         </div>
         <div class="mssg-box">
-          <input type="text" placeholder="Message" />
+          <span class="count-char">Current characters:0 and current words:0</span>
+          <div class="text-box">
+            <input type="text" placeholder="Type your message here..." oninput="calc(event)"/>
+             <div class="send-btn-div">
+              <button class="send-btn">Send</button>
+             </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
