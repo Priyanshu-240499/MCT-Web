@@ -57,16 +57,7 @@
                   <option>brown</option>
                   <option>cyan</option>
                   <option>maroon</option>
-                  <option>olive</option>
-
-
-
-
-
-
-
-
-                  
+                  <option>olive</option> 
                 </select>
               </div>
               <div class="dropdown-item" href="#">
@@ -141,9 +132,9 @@
         <div class="mssg-box">
           <span class="count-char">Current characters:0 and current words:0</span>
           <div class="text-box">
-            <input type="text" placeholder="Type your message here..." oninput="calc(event)"/>
+            <input type="text" placeholder="Type your message here..." oninput="calc(this)" class="inpMssg"/>
              <div class="send-btn-div">
-              <button class="send-btn">Send</button>
+              <button class="send-btn" onClick="sendMssg()">Send</button>
              </div>
           </div>
         </div>

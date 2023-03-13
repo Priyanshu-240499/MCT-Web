@@ -51,7 +51,13 @@ function currentUser(element, index) {
   element.parentElement.classList.add("active");
   const name = element.children[1].children[0].children[0].innerHTML;
   const currentUserData = usersData.filter((item) => item.name === name);
-  UpdateChat(currentUserData, Object.values(JsonData)[index]);
+  let selectedChat=undefined;
+  Object.keys(JsonData).forEach((element,i) => {
+    if(+element.charAt(element.length-1)==index+1){
+      selectedChat=Object.values(JsonData)[i]
+    }
+  });
+  UpdateChat(currentUserData, selectedChat);
 }
 // Function for Updating Data for selected User .......................
 function UpdateChat([{ avatar, name, status }], chat) {
@@ -73,10 +79,16 @@ function UpdateChat([{ avatar, name, status }], chat) {
         <p class="current-highlights">${status}</p>
       </div>
     </div>`;
+    // console.log(current_user);
+    document.querySelector(".chat-box").innerHTML = "";
+    document.querySelector(".chat-box").appendChild(current_user);
+    AddChat(chat)
+}
 
+function AddChat(chat) {
   if (chat !== undefined) {
     const chatData = document.createElement("div");
-    current_user.classList.add("chat");
+    chatData.classList.add("chat");
     chat.forEach((element) => {
       const user_container = document.createElement("div");
       const user_mssg = document.createElement("p");
@@ -91,17 +103,12 @@ function UpdateChat([{ avatar, name, status }], chat) {
       }
       chatData.appendChild(user_container);
     });
-
-    document.querySelector(".chat-box").innerHTML = "";
-    document.querySelector(".chat-box").appendChild(current_user);
     document.querySelector(".chat-box").appendChild(chatData);
   } else {
-    const noChat = document.createElement("h5");
-    noChat.innerText = "Start Chat...";
-    document.querySelector(".chat-box").innerHTML = "";
+    const chatData=document.createElement("div")
+    chatData.classList.add("chat")
 
-    document.querySelector(".chat-box").appendChild(current_user);
-    document.querySelector(".chat-box").appendChild(noChat);
+    document.querySelector(".chat-box").appendChild(chatData);
   }
 }
 
@@ -111,7 +118,7 @@ function goBack() {
   document.querySelector(".left").style.display = "block";
   document.querySelector(".left").style.width = "100%";
 }
-// console.log(document.styleSheets[0]);
+
 // EventListner to autoadjust based on screen size
 window.addEventListener("resize", function () {
   if (window.innerWidth <= 750) {
@@ -159,25 +166,26 @@ function selectTheme(event) {
 function changeBg(event) {
   let r = document.querySelector(":root");
   let bg = event.target.value;
-  const chatContainer=document.querySelector('.chat')
   switch (bg) {
     case "Change background":
-      chatContainer.style.backgroundImage='url("https://i.pinimg.com/originals/f5/05/24/f50524ee5f161f437400aaf215c9e12f.jpg")'
+      r.style.setProperty("--background-img", 'url("https://i.pinimg.com/originals/f5/05/24/f50524ee5f161f437400aaf215c9e12f.jpg")');
+    
       break;
     case "image1":
-      chatContainer.style.backgroundImage='url("https://w0.peakpx.com/wallpaper/818/148/HD-wallpaper-whatsapp-background-cool-dark-green-new-theme-whatsapp.jpg")'
+      r.style.setProperty("--background-img", 'url("https://w0.peakpx.com/wallpaper/818/148/HD-wallpaper-whatsapp-background-cool-dark-green-new-theme-whatsapp.jpg")');
+     
       break;
     case "image2":
-      chatContainer.style.backgroundImage='url("https://wallpaperaccess.com/full/1288076.jpg")'
+      r.style.setProperty("--background-img", 'url("https://wallpaperaccess.com/full/1288076.jpg")');
     break;
     case "image3":
-      chatContainer.style.backgroundImage='url("https://i.pinimg.com/736x/78/1e/21/781e212cb0a891c6d8a3738c525e235d.jpg")'
+      r.style.setProperty("--background-img", 'url("https://i.pinimg.com/736x/78/1e/21/781e212cb0a891c6d8a3738c525e235d.jpg")');
     break;
   }
 }
 //  function for char and word count
 function calc(event) {
-  const str=event.target.value
+  const str=event.value
   if(str===""){
     document.querySelector('.count-char').innerText=`Current characters:${0} and current words:${0}`
   }
@@ -186,5 +194,48 @@ function calc(event) {
   const arrlength=str.split(" ").length
   document.querySelector('.count-char').innerText=`Current characters:${length} and current words:${arrlength}`
   }
+}
+
+// function to send Message 
+function sendMssg() {
+  const inpMssg=document.querySelector(".inpMssg")
+  if(inpMssg.value===""){
+    alert("Please Enter Ssome Text")
+  }
+  else{
+  const arr=document.querySelectorAll(".user-list")
+  let index=0;
+  for(let i=0;i<arr.length;i++){
+    if(arr[i].className==="user-list active"){
+      index=i+1
+      break
+    }
+  }
+  let name=`chat${index}` 
+  const newMssg=[{
+    from: {
+      type: "user2",
+    },
+    msg: {
+      message:inpMssg.value
+    },
+  },]
+  if(JsonData[name]){
+    JsonData[name]=[...JsonData[name],...newMssg]
+  }
+  else{
+    JsonData[name]=newMssg
+  }
+  document.querySelector('.chat').remove()
+  AddChat(JsonData[name])
+  inpMssg.value=""
+  calc(document.querySelector('.inpMssg'))
+  }
+  
+
+  
+  
+  
+  
   
 }
